@@ -1,23 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
-const CONSULTATION_TYPES = [
-  { label: 'Video Consult', value: 'video' },
-  { label: 'In Clinic', value: 'clinic' },
-];
-
-const SPECIALTIES = [
-  'General Physician',
-  'Dermatologist',
-  'Cardiologist',
-  'Pediatrician',
-  'Orthopedic',
-  'Neurologist',
-];
-
-const SORT_OPTIONS = [
-  { label: 'Fees (Low to High)', value: 'fees_asc' },
-  { label: 'Experience (High to Low)', value: 'exp_desc' },
-];
+import { ConsultationTypeFilter, SpecialtiesFilter, SortOptionsFilter } from './DoctorFilters';
 
 const API_URL = 'https://srijandubey.github.io/campus-api-mock/SRM-C1-25.json';
 
@@ -141,77 +123,11 @@ const DoctorDirectory = () => {
         )}
       </div>
 
-      {/* Filter Panel */}
-      <div className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Consultation Type */}
-        <div className="bg-gradient-to-r from-blue-400 to-blue-600 p-4 rounded-lg shadow-lg text-white">
-          <h3 className="font-semibold mb-3 text-lg">Consultation Type</h3>
-          {CONSULTATION_TYPES.map(type => (
-            <label key={type.value} className="block mb-2 cursor-pointer">
-              <input
-                type="radio"
-                name="consultationType"
-                value={type.value}
-                checked={consultationType === type.value}
-                onChange={() => setConsultationType(type.value)}
-                className="mr-3 accent-white"
-              />
-              {type.label}
-            </label>
-          ))}
-          <button
-            className="mt-3 text-sm underline hover:text-gray-200"
-            onClick={() => setConsultationType('')}
-          >
-            Clear
-          </button>
-        </div>
-
-        {/* Specialties */}
-        <div className="bg-gradient-to-r from-purple-400 to-purple-600 p-4 rounded-lg shadow-lg text-white">
-          <h3 className="font-semibold mb-3 text-lg">Specialties</h3>
-          {SPECIALTIES.map(spec => (
-            <label key={spec} className="block mb-2 cursor-pointer">
-              <input
-                type="checkbox"
-                value={spec}
-                checked={specialties.includes(spec)}
-                onChange={() => toggleSpecialty(spec)}
-                className="mr-3 accent-white"
-              />
-              {spec}
-            </label>
-          ))}
-          <button
-            className="mt-3 text-sm underline hover:text-gray-200"
-            onClick={() => setSpecialties([])}
-          >
-            Clear
-          </button>
-        </div>
-
-        {/* Sort Options */}
-        <div className="bg-gradient-to-r from-green-400 to-green-600 p-4 rounded-lg shadow-lg text-white">
-          <h3 className="font-semibold mb-3 text-lg">Sort By</h3>
-          <select
-            className="w-full rounded px-3 py-2 shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 border border-green-300 text-black"
-            value={sortOption}
-            onChange={e => setSortOption(e.target.value)}
-          >
-            <option value="">Select</option>
-            {SORT_OPTIONS.map(opt => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
-          <button
-            className="mt-3 text-sm underline hover:text-gray-200"
-            onClick={() => setSortOption('')}
-          >
-            Clear
-          </button>
-        </div>
+      {/*filters*/}
+      <div className="mb-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <ConsultationTypeFilter consultationType={consultationType} setConsultationType={setConsultationType} />
+        <SpecialtiesFilter specialties={specialties} toggleSpecialty={toggleSpecialty} clearSpecialties={() => setSpecialties([])} />
+        <SortOptionsFilter sortOption={sortOption} setSortOption={setSortOption} clearSortOption={() => setSortOption('')} />
       </div>
 
       {/* Doctor List */}
