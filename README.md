@@ -1,6 +1,6 @@
-# Doctor Directory Web App
+# Doctor Directory Web App (React Version)
 
-A responsive and fully client-side searchable, filterable, and sortable doctor directory. This project fetches data from a mock API and allows users to search for doctors, apply multiple filters, and sort results. URL query parameters are maintained to ensure back/forward browser navigation retains state.
+A responsive and fully client-side searchable, filterable, and sortable doctor directory built with React and styled using Tailwind CSS. This project fetches data from a mock API and allows users to search for doctors, apply multiple filters, and sort results. URL query parameters are maintained to ensure back/forward browser navigation retains state.
 
 ## Features
 
@@ -27,12 +27,14 @@ A responsive and fully client-side searchable, filterable, and sortable doctor d
 
 ## Tech Stack
 
-- HTML, CSS (Vanilla/Bootstrap)
-- JavaScript (Vanilla JS)
+- React 18
+- Tailwind CSS
+- Vite (build tool)
 - [Mock API](https://srijandubey.github.io/campus-api-mock/SRM-C1-25.json)
 
 ## How to Run
 
-1. Clone or download the repository.
-2. Open `index.html` in any browser.
-3. Start searching and filtering doctors!
+1. Run `npm install` to install dependencies.
+2. Run `npm run dev` to start the development server.
+3. Open the URL shown in the terminal (usually http://localhost:5173).
+4. Start searching and filtering doctors!
