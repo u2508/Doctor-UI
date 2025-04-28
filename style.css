@@ -1,0 +1,17 @@
+/* Custom styles for Doctor Directory */
+
+body {
+  background-color: #f8f9fa;
+}
+
+#autocompleteList {
+  cursor: pointer;
+}
+
+.list-group-item {
+  cursor: default;
+}
+
+.list-group-item:hover {
+  background-color: #f1f1f1;
+}
